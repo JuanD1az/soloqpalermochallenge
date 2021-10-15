@@ -13,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/', 'App\Http\Controllers\ParticipantesController');
+Route::resource('test', 'App\Http\Controllers\ParticipantesController');
