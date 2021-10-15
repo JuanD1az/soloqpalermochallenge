@@ -13,8 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
-    return view('prueba');
-});
-
-Route::resource('test', 'App\Http\Controllers\ParticipantesController');
+Route::resource('/', 'App\Http\Controllers\ParticipantesController');
