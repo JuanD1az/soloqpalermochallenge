@@ -27,6 +27,7 @@ class ParticipantesController extends Controller
             $datos = json_decode($response->getBody());
             $array[$key->id] = $datos;
             $array[$key->id][5]['nombre']=$key->nickname;
+            $array[$key->id][5]['opgg']=$key->opgg;
         }
         return view('welcome')->with('array',$array);
     }

@@ -46,12 +46,13 @@
             </tr>
         </thead>
         <tbody>
-
+        
             @foreach ($array as $participante)
             <tr>            
                 @if (count($participante)<4)
                     <td class="tdn">{{$participante[5]['nombre']}}</td>
-                    <td class="tdn">{{$participante[0]->summonerName}}</td>
+                    <td class="tdn">{{$participante[0]->summonerName}} <a title="OPGG" href="{{$participante[5]['opgg']}}"><img src="https://w.namu.la/s/42dc29eef1c348a550b966cff14deddcbd92a62d65744a9f30b53e7447611506de44395a3a83bd657760cedcbf38fc63cc4fe2cdb61574cd47b22381d512a18a3103c4d45e9e0fdbcf7eae5d70b6a78f0fac88750a43bf26d1413317581ef21f" width="70" height="40" alt="OPGG"/></a>
+                    </td>
                     <td class="card-body">
                         <h6 class="card-title">{{$participante[0]->tier}} {{$participante[0]->rank}}</h5>
                         <p class="card-text">({{$participante[0]->leaguePoints}} LP)</p>
@@ -71,11 +72,9 @@
                         </p>
                     </td>
 
-
-
                 @else(count($participante)<3)
                     <td class="tdn">{{$participante[5]['nombre']}}</td>
-                    <td class="tdn">{{$participante[1]->summonerName}}</td>
+                    <td class="tdn">{{$participante[1]->summonerName}} <a title="OPGG" href="{{$participante[5]['opgg']}}"><img src="https://w.namu.la/s/42dc29eef1c348a550b966cff14deddcbd92a62d65744a9f30b53e7447611506de44395a3a83bd657760cedcbf38fc63cc4fe2cdb61574cd47b22381d512a18a3103c4d45e9e0fdbcf7eae5d70b6a78f0fac88750a43bf26d1413317581ef21f" width="70" height="40" alt="OPGG"/></a>
                     <td class="card-body">
                         <h6 class="card-title">{{$participante[1]->tier}} {{$participante[1]->rank}}</h5>
                         <p class="card-text">({{$participante[1]->leaguePoints}} LP)</p>
