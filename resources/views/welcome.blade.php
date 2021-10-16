@@ -35,7 +35,7 @@
                     <td>{{$participante[0]->leaguePoints}}</td>
                     <td>{{$participante[0]->wins}}</td>
                     <td>{{$participante[0]->losses}}</td>
-                    <td>{{bcdiv($participante[0]->wins/($participante[0]->wins+$participante[0]->losses)*100,1,0)}}%</td>
+                    <td>{{$participante[0]->wins/($participante[0]->wins+$participante[0]->losses)*100}}%</td>
                 @else(count($participante)<2)
                     <td>{{$participante[5]['nombre']}}</td>
                     <td>{{$participante[1]->summonerName}}</td>
@@ -43,7 +43,7 @@
                     <td>{{$participante[1]->leaguePoints}}</td>
                     <td>{{$participante[1]->wins}}</td>
                     <td>{{$participante[1]->losses}}</td>
-                    <td>{{bcdiv($participante[1]->wins/($participante[1]->wins+$participante[1]->losses)*100,1,0)}}%</td>
+                    <td>{{$participante[1]->wins/($participante[1]->wins+$participante[1]->losses)*100}}%</td>
                 @endif
             </tr>
             @endforeach
