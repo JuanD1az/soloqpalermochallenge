@@ -53,7 +53,7 @@
                     <td class="tdn">{{$participante[5]['nombre']}}</td>
                     <td class="tdn">{{$participante[0]->summonerName}}</td>
                     <td class="card-body">
-                        <h6 class="card-title">{{$participante[0]->tier}} {{$participante[1]->rank}}</h5>
+                        <h6 class="card-title">{{$participante[0]->tier}} {{$participante[0]->rank}}</h5>
                         <p class="card-text">({{$participante[0]->leaguePoints}} LP)</p>
                     </td>
                     <td>

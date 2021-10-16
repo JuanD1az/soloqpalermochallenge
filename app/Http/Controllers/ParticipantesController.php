@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Participante;
+use Illuminate\Support\Facades\DB;
 
 class ParticipantesController extends Controller
 {
@@ -16,10 +17,13 @@ class ParticipantesController extends Controller
     public function index()
     {
         $participantes = Participante::all();
+        $riotid = DB::table('tokenriot')
+        ->select('riot')
+        ->pluck('riot');
         $array = [];
         foreach($participantes as $p => $key){
             $array[$key->id] = Participante::find($key->id);
-            $response = Http::get("https://la2.api.riotgames.com/lol/league/v4/entries/by-summoner/$key->iduser?api_key=RGAPI-45faf019-6771-4281-9cd8-73908842c684");
+            $response = Http::get("https://la2.api.riotgames.com/lol/league/v4/entries/by-summoner/$key->iduser?api_key=".$riotid[0]);
             $datos = json_decode($response->getBody());
             $array[$key->id] = $datos;
             $array[$key->id][5]['nombre']=$key->nickname;
