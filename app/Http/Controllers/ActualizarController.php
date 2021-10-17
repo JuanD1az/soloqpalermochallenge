@@ -29,6 +29,7 @@ class ActualizarController extends Controller
             $usuario->save();
         }
         return redirect()->back();       
+        //return redirect('/'); 
     }
 
     /**
