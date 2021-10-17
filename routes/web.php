@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('/', 'App\Http\Controllers\ParticipantesController');
+Route::resource('actualizar', 'App\Http\Controllers\ActualizarController');

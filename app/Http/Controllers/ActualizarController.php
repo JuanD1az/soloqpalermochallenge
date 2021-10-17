@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Participante;
 use Illuminate\Support\Facades\DB;
 
-class ParticipantesController extends Controller
+class ActualizarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,16 +20,15 @@ class ParticipantesController extends Controller
         $riotid = DB::table('tokenriot')
             ->select('riot')
             ->pluck('riot');
-        $array = [];
-        foreach($participantes as $p => $key){
-            $array[$key->id] = Participante::find($key->id);
-            $response = Http::get("https://la2.api.riotgames.com/lol/league/v4/entries/by-summoner/$key->iduser?api_key=".$riotid[0]);
-            $datos = json_decode($response->getBody());
-            $array[$key->id] = $datos;
-            $array[$key->id][5]['nombre']=$key->nickname;
-            $array[$key->id][5]['opgg']=$key->opgg;
+
+        foreach($participantes as $ps  => $key){
+            $usuario = Participante::find($key->id);
+            $response = Http::get("https://la2.api.riotgames.com/lol/summoner/v4/summoners/by-name/$key->nicklol?api_key=".$riotid[0]);
+            $datoid = json_decode($response->getBody());
+            $usuario->iduser = $datoid->id;
+            $usuario->save();
         }
-        return view('welcome')->with('array',$array);
+        return redirect('/');        
     }
 
     /**
