@@ -25,9 +25,13 @@ class ParticipantesController extends Controller
             $array[$key->id] = Participante::find($key->id);
             $response = Http::get("https://la2.api.riotgames.com/lol/league/v4/entries/by-summoner/$key->iduser?api_key=".$riotid[0]);
             $datos = json_decode($response->getBody());
+            if(is_array($datos) == false){
+                return redirect('actualizar');
+            }else{
             $array[$key->id] = $datos;
             $array[$key->id][5]['nombre']=$key->nickname;
             $array[$key->id][5]['opgg']=$key->opgg;
+            }
         }
         return view('welcome')->with('array',$array);
     }
