@@ -28,7 +28,7 @@ class ActualizarController extends Controller
             $usuario->iduser = $datoid->id;
             $usuario->save();
         }
-        return redirect('/');        
+        return redirect()->back();       
     }
 
     /**
