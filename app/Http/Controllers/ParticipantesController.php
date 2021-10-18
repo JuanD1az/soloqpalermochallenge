@@ -31,8 +31,17 @@ class ParticipantesController extends Controller
             $array[$key->id] = $datos;
             $array[$key->id][5]['nombre']=$key->nickname;
             $array[$key->id][5]['opgg']=$key->opgg;
+
+            $response2 = Http::get("https://la2.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/$key->iduser?api_key=".$riotid[0]);
+            $datos2 = json_decode($response2->getBody());
+                if(count((array)$datos2) == 1){
+                    $array[$key->id][5]['actividad']='Inactivo';
+                }else{
+                    $array[$key->id][5]['actividad']='Activo';
+                }
             }
         }
+    
         return view('welcome')->with('array',$array);
     }
 

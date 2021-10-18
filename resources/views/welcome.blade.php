@@ -43,6 +43,7 @@
                 <th scope="col">Cuenta</th>
                 <th scope="col">Rank</th>
                 <th scope="col">Winrate</th>
+                <th scope="col">Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -71,6 +72,7 @@
                             {{number_format($participante[0]->wins/($participante[0]->wins+$participante[0]->losses)*100)}}%
                         </p>
                     </td>
+                    <td class="tdn">{{$participante[5]['actividad']}}</td>
 
                 @else(count($participante)<3)
                     <td class="tdn">{{$participante[5]['nombre']}}</td>
@@ -93,6 +95,8 @@
                             {{number_format($participante[1]->wins/($participante[1]->wins+$participante[1]->losses)*100)}}%
                         </p>
                     </td>
+                    <td class="tdn">{{$participante[5]['actividad']}}</td>
+
                 @endif
             </tr>
             @endforeach
